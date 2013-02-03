@@ -24,7 +24,7 @@
 			var token = query[1].split('=');
 			var access_token = token[1];
 			access_token =access_token.split("&");
-			window.location.href="header.php?t="+access_token[0];
+			window.location.href="event_add.php?t="+access_token[0];
 		    }
                 </script>
     <?php //include('sidebar.php'); ?>
