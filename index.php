@@ -1,4 +1,4 @@
-<?php //include('header.php'); ?>
+<?php session_start();?>
 <html>
     <head>
         <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
@@ -14,10 +14,18 @@
                 </p>
                 <script>
                     var query = location.href.split('#');
-                    if(query[1] == "error=access_denied")
+                    var accessStatus = query[1];
+                    if(accessStatus == "error=access_denied")
                     {
                         document.writeln("<p class='alert'>!!!ALERT!!!!<br/>You have denied acces to the Application.<br/>!!!ALERT!!!</p>");
                     }
+                    else if(accessStatus.match(/access_token/g) == "access_token")
+                    {
+			var token = query[1].split('=');
+			var access_token = token[1];
+			access_token =access_token.split("&");
+			window.location.href="header.php?t="+access_token[0];
+		    }
                 </script>
     <?php //include('sidebar.php'); ?>
     </body>
